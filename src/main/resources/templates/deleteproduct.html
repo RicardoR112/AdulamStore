@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en"	xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="utf-8">
+       <title>Adulam Store</title>
+	   <link rel="stylesheet" th:href="@{/css/custom.css}">
+   	   <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+   		
+      <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+      
+  </head>
+  <body>
+<div class="wrapper">
+     
+	  <div class="body-overlay"></div>
+	 
+	 <div id="sidebar">
+	    <div class="sidebar-header">
+		   <form th:each="adm: ${admin}" action="#">
+		   	<h3><span>Adulam Store</span><br><span th:text="${adm.nombre}"></span></h3>
+		   </form>
+		</div>
+		<ul class="list-unstyled component m-0">
+		  <li class="active">
+		  <a th:href="@{/producto/list}" class="dashboard"><i class="material-icons">inventory_2</i>Productos</a>
+		  </li>
+		  
+		  <li class="dropdown">
+		  <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" 
+		  class="dropdown-toggle">
+		  <i class="material-icons">payments</i>Administración
+		  </a>
+		  <ul class="collapse list-unstyled menu" id="homeSubmenu1">
+		     <li><a href="#"><i class="material-icons">trending_up</i>Ventas</a></li>
+			 <li><a href="#"><i class="material-icons">bar_chart</i>Estadísticas</a></li>
+			 <li><a href="#"><i class="material-icons">receipt_long</i>Informes</a></li>
+		  </ul>
+		  </li>
+		  <li class="dropdown">
+		  <a href="#homeSubmenu6" data-toggle="collapse" aria-expanded="false" 
+		  class="dropdown-toggle">
+		  <i class="material-icons">groups</i>Clientes
+		  </a>
+		  <ul class="collapse list-unstyled menu" id="homeSubmenu6">
+		     <li><a href="#"><i class="material-icons">paid</i>Compras</a></li>
+			 <li><a href="#"><i class="material-icons">local_shipping</i>Domicilios</a></li>
+			 <li><a href="#"><i class="material-icons">cases</i>Apartados</a></li>
+		  </ul>
+		  </li>
+		  <li class="dropdown">
+		  <a href="#homeSubmenu7" class="list-unstyled component m-0">
+		  <i class="material-icons">content_copy</i>PQRS
+		  </a>
+		  </li>		
+		</ul>
+	 </div>
+   
+   
+      <div id="content">
+		  <div class="top-navbar">
+		     <div class="xd-topbar">
+			     <div class="row">
+				     <div class="col-2 col-md-1 col-lg-1 order-2 order-md-1 align-self-center">
+					    <div class="xp-menubar">
+						    <span class="material-icons text-white">signal_cellular_alt</span>
+						</div>
+					 </div>
+					 
+					 <div class="col-md-5 col-lg-3 order-3 order-md-2">
+					     <div class="xp-searchbar">
+						     <form>
+							    <div class="input-group">
+								  <input type="search" class="form-control"
+								  placeholder="Search">
+								  <div class="input-group-append">
+								     <button class="btn" type="submit" id="button-addon2">Go
+									 </button>
+								  </div>
+								</div>
+							 </form>
+						 </div>
+					 </div>
+					 
+					 
+					 <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">
+					     <div class="xp-profilebar text-right">
+						    <nav class="navbar p-0">
+							   <ul class="nav navbar-nav flex-row ml-auto">
+							   <li class="dropdown nav-item active">
+							     <a class="nav-link" href="#" data-toggle="dropdown">
+								  <span class="material-icons">notifications</span>
+								  <span class="notification">1</span>
+								 </a>
+								  <ul class="dropdown-menu">
+								     <li><a href="#">You Have 1 New Messages</a></li>
+								  </ul>
+							   </li>
+							   
+							   <li class="dropdown nav-item">
+							     <a class="nav-link" href="#" data-toggle="dropdown">
+								  <i class="material-icons">power_settings_new</i>
+								  <span class="xp-user-live"></span>
+								 </a>
+								  <ul class="dropdown-menu small-menu">
+								     <li><a href="#">
+									 <span class="material-icons">person_outline</span>
+									 Profile
+									 </a></li>
+									 <li><a href="#">
+									 <span class="material-icons">settings</span>
+									 Settings
+									 </a></li>
+									 <li><a href="/admin/logout">
+									 <span class="material-icons">logout</span>
+									 Logout
+									 </a></li>
+								  </ul>
+							   </li>
+							   </ul>
+							</nav>
+						 </div>
+					 </div>
+					 
+				 </div>
+				 
+				 <div class="xp-breadcrumbbar text-center">
+				    <h4 class="page-title">ADULAM STORE</h4>
+				 </div>
+				 <div class="alert alert-success" th:if="${accion != null }">
+				<label th:text="${accion}"></label>
+				</div>
+			 </div>
+		  </div> 		
+<br><br>
+	<div class="container col-md-4">
+	<form th:object="${producto}">
+        <h5 class="modal-title">Eliminar producto</h5>
+       
+      <div class="form-group">
+      <br>
+      <input type="hidden" th:field="*{id}" class="form-control" name="id">
+      <div class="form-group">
+        <label>¿Seguro quieres eliminar el producto?</label>
+		<label>Esta acción no tiene reverso</small></label>
+      </div>
+      </div>
+      <div style="text-align:center; margin-top:25%; margin-bottom:30%; padding-left:10%">
+        <a th:href="@{/producto/delete/{id}(id=${producto.id})}" class="btn btn-success">Borrar</a>
+        <a type="button" class="btn btn-secondary" data-dismiss="modal" style="color:white" th:href="@{/producto/list}">Cancelar</a>
+      </div>
+      </form>
+    </div>
+			 <footer id="footer" style="position:relative;margin-top:20%;bottom:0;width:100%">
+				<div class="container">
+						<div class="col-md-12 text-center">
+							<span class="copyright" style="color:white">
+								 Adulam Store © 2022     ||     Todos los derechos reservados
+							</span>
+						</div>
+				</div>
+		</footer>
+  </div>
+</div>
+
+
+   <script th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+   <script th:src="@{/js/popper.min.js}"></script>
+   <script th:src="@{/js/bootstrap.min.js}"></script>
+   <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+   
+  <script type="text/javascript">
+       $(document).ready(function(){
+	      $(".xp-menubar").on('click',function(){
+		    $("#sidebar").toggleClass('active');
+			$("#content").toggleClass('active');
+		  });
+		  
+		  $('.xp-menubar,.body-overlay').on('click',function(){
+		     $("#sidebar,.body-overlay").toggleClass('show-nav');
+		  });
+		  
+	   });
+  </script>
+  </body>
+  </html>

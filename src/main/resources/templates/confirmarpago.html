@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Adulam Store</title>
+
+ 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+     	<link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
+      	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+ 		<link rel="stylesheet" th:href="@{/css2/bootstrap.min.css}"/>
+ 		<link rel="stylesheet" th:href="@{/css2/slick.css}"/>
+ 		<link rel="stylesheet" th:href="@{/css2/slick-theme.css}"/>
+ 		<link rel="stylesheet" th:href="@{/css2/nouislider.min.css}"/>
+ 		<link rel="stylesheet" th:href="@{/css2/font-awesome.min.css}">
+ 		<link rel="stylesheet" th:href="@{/css2/style.css}"/>
+
+    </head>
+	<body>
+		<header>
+			<div id="top-header" th:if="${cliente != null}">
+				<div class="container">
+					<ul class="header-links pull-left">
+						<li><a href="#"><i class="fa fa-phone"></i>+57 3132274023</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> tecnosistemasadulam@email.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> CC Gran Bulevar L-120</a></li>
+					</ul>
+					<ul class="header-links pull-right">
+						<li style="color:white">Bienvenido - <span style="color:white" th:text="${cliente}"></span></li>
+						<a th:href="@{/adulamstore/logout}" style="color:white">Cerrar Sesión</a>
+					</ul>
+				</div>
+			</div>
+			<div id="top-header" th:if="${cliente == null}">
+				<div class="container">
+					<ul class="header-links pull-left">
+						<li><a href="#"><i class="fa fa-phone"></i>+57 3132274023</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> tecnosistemasadulam@email.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> CC Gran Bulevar L-120</a></li>
+					</ul>
+					<ul class="header-links pull-right">
+						<li><a th:href="@{/adulamstore/login}"><i class="fa fa-user-o"></i>Mi cuenta</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div id="header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="header-logo">
+									<img th:src="@{/img/logoadulam.png}" style="width:150px;height:150px">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="header-search">
+								<form>
+									<select class="input-select" type="number">
+										<form th:each="cat: ${categoria}" action="#">
+											<option th:value="${cat.id}" th:text="${cat.nombre}">Categorías</option>
+										</form>
+								    </select>
+								   <input class="input" name="nombre" placeholder="Digite aquí">
+								  <button type="button" class="search-btn">Buscar</button>
+								</form>
+							</div>
+						</div>
+						<div class="col-md-3 clearfix">
+							<div class="header-ctn">
+								<a th:href="@{/adulamstore/list}" style="color:white">Volver</a>
+								<div class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+										<i class="fa fa-shopping-cart"></i>
+										<span>Carrito</span>
+										<div class="quantity">0</div>
+									</a>
+									<div class="cart-dropdown">
+										<div class="cart-list">
+										</div>
+										<div class="cart-summary">
+											<h5 class="subtotal">SUBTOTAL: $0</h5>
+										</div>
+										<div class="cart-btns">
+											<a href="#" id="vaciar">Vaciar Carrito</a>
+											<a href="#" id="pagar">Pagar  <i class="fa fa-arrow-circle-right"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		
+		<label>Compra confirmada</label>
+		<footer id="footer" style="position:relative;bottom:-100px;width:100%">
+				<div class="container">
+						<div class="col-md-12 text-center">
+							<span class="copyright" style="color:white">
+								 Adulam Store © 2022     ||     Todos los derechos reservados
+							</span>
+						</div>
+				</div>
+		</footer>
+
+		<!-- jQuery Plugins -->
+		<script th:src="@{/js2/cart.js}"></script>
+		<script th:src="@{/js2/jquery.min.js}"></script>
+		<script th:src="@{/js2/bootstrap.min.js}"></script>
+		<script th:src="@{/js2/slick.min.js}"></script>
+		<script th:src="@{/js2/nouislider.min.js}"></script>
+		<script th:src="@{/js2/jquery.zoom.min.js}"></script>
+
+	</body>
+</html>

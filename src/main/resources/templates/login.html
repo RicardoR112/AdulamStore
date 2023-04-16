@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Adulam Store</title>
+<link rel="stylesheet" th:href="@{/css/stylelogin.css}">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="icon" href="https://i.imgur.com/zWVUxBY.png">
+
+</head>
+<body>
+
+	<div class="area2">
+	
+	<ul class="circles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+		<div class="container">
+			<div
+				class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+					<h1 class="text-center text-light mt-5" style="height:5rem">ADULAM STORE</h1>
+					<div class="card my-5 d-flex justify-content-center">
+
+						<form action="#" class="card-body cardbody-color p-lg-5"
+							th:action="@{/adulamstore/singin}" method="post">
+							
+							<div class="avatar2">
+								<img src="https://i.imgur.com/CFPOXvk.png" alt="Avatar">
+							</div>
+							
+							<h1 style="height:1rem"></h1>
+
+							<div class="mb-3">
+								<input type="text" class="form-control" name="email"
+									aria-describedby="emailHelp" placeholder="Correo"
+									required="required">
+							</div>
+							<div class="mb-3">
+								<input type="password" class="form-control" name="password"
+									placeholder="Contraseña" required="required">
+							</div>
+
+
+							<div class="text-center">
+
+
+								<button type="submit" class="btn btn-color btn-lg px-5 mb-5 w-100 btn2">Iniciar
+									Sesión</button>
+
+							</div>
+							
+							<div id="emailHelp" class="form-text text-center mb-5 text-dark">
+								¿No estás registrado? <a th:href="@{/adulamstore/new}"><br>Hazlo
+									ahora</a>
+							</div>
+						</form>
+						<div style="margin-top: -15%"
+							class="alert alert-danger alert-dismissible fade show"
+							role="alert" th:if="${loginError != null }">
+							<label th:text="${loginError}"></label>
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="alert alert-success alert-dismissible fade show"
+							role="alert" th:if="${accion != null }">
+							<label th:text="${accion}"></label>
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<script th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+</body>
+</html>

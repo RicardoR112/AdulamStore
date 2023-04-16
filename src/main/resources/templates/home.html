@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Adulam Store</title>
+
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700"
+	rel="stylesheet">
+
+<link rel="stylesheet" th:href="@{/css2/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css2/slick.css}" />
+<link rel="stylesheet" th:href="@{/css2/slick-theme.css}" />
+<link rel="stylesheet" th:href="@{/css2/slider.css}" />
+
+<link rel="stylesheet" th:href="@{/css2/nouislider.min.css}" />
+<link rel="stylesheet" th:href="@{/css2/font-awesome.min.css}">
+<link rel="stylesheet" th:href="@{/css2/style.css}" />
+<link rel="icon" href="https://i.imgur.com/zWVUxBY.png">
+
+
+
+
+</head>
+<body>
+	<header>
+		<div id="top-header" th:if="${cliente != null}">
+			<div class="container">
+				<ul class="header-links pull-left">
+					<li><a href="#"><i class="fa fa-phone"></i>+57 3132274023</a></li>
+					<li><a href="#"><i class="fa fa-envelope-o"></i>
+							tecnosistemasadulam@email.com</a></li>
+					<li><a href="#"><i class="fa fa-map-marker"></i> CC Gran
+							Bulevar L-120</a></li>
+				</ul>
+				<ul class="header-links pull-right">
+					<li style="color: white">Bienvenido - <span
+						style="color: white" th:text="${cliente}"></span></li>
+				</ul>
+			</div>
+		</div>
+		<div id="top-header" th:if="${cliente == null}">
+			<div class="container">
+				<ul class="header-links pull-left">
+					<li><a href="#"><i class="fa fa-phone"></i>+57 3132274023</a></li>
+					<li><a href="#"><i class="fa fa-envelope-o"></i>
+							tecnosistemasadulam@email.com</a></li>
+					<li><a href="#"><i class="fa fa-map-marker"></i> CC Gran
+							Bulevar L-120</a></li>
+				</ul>
+				<ul class="header-links pull-right">
+					<li><a th:href="@{/adulamstore/login}"><i
+							class="fa fa-user-o"></i>Mi cuenta</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="header-logo">
+							<img th:src="@{https://i.imgur.com/aAJ2EQF.png}"
+								style="width: 120px; height: 120px">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="header-search">
+							<form>
+								<select class="input-select" type="number">
+									<form th:each="cat: ${categoria}" action="#">
+										<option th:value="${cat.id}" th:text="${cat.nombre}">Categorías</option>
+									</form>
+								</select> <input class="input" placeholder="Digite aquí">
+								<button class="search-btn">Buscar</button>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-3 clearfix">
+						<div class="header-ctn">
+
+							<div class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown"
+									aria-expanded="true"> <i class="fa fa-shopping-cart"></i> <span>Carrito</span>
+									<div class="quantity">0</div>
+								</a>
+								<div class="cart-dropdown">
+									<div class="cart-list"></div>
+									<div class="cart-summary">
+										<h5 class="subtotal">SUBTOTAL: $0</h5>
+									</div>
+									<div class="cart-btns">
+										<a href="#" id="vaciar">Vaciar Carrito</a> <a href="#"
+											id="pagar">Pagar <i class="fa fa-arrow-circle-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- NAVIGATION -->
+	<nav id="navigation">
+		<!-- container -->
+		<div class="container">
+			<!-- responsive-nav -->
+			<div id="responsive-nav">
+				<!-- NAV -->
+				<ul class="main-nav nav navbar-nav">
+					<li class="active"><a th:href="@{/adulamstore}">INICIO</a></li>
+					<li><a th:href="@{/adulamstore/list}">CATEGORÍAS</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	
+	<div class="container-home">
+		<div class="container-slider">
+			<div class="slider" id="slider">
+				<div class="slider_section">
+					<img th:src="@{https://i.imgur.com/ogGHIFK.jpg}" class="slider_img">
+				</div>
+				<div class="slider_section">
+					<img th:src="@{https://i.imgur.com/7KNi7dO.jpg}" class="slider_img">
+				</div>
+				<div class="slider_section">
+					<img th:src="@{https://i.imgur.com/LMLjLqM.jpg}" class="slider_img">
+				</div>
+				<div class="slider_section">
+					<img th:src="@{https://i.imgur.com/tq0il5i.jpg}" class="slider_img">
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+	<br>
+
+	<div class="container" align=left>
+
+		<div class="col-md-0">
+
+
+			<h1 class="titulo">TecnoSistemas ADULAM</h1>
+
+		</div>
+
+		<div class="col-md-0" align=right>
+
+
+			<div class="imagen1">
+
+				<img alt="" src="https://i.imgur.com/npH2VqB.png"
+					style="width: 450px; height: 400px">
+
+			</div>
+
+
+
+		</div>
+
+
+
+
+	</div>
+
+
+
+
+	<footer id="footer"
+		style="position: relative; margin-top: 10%; bottom: 0; width: 100%">
+		<div class="container">
+			<div class="col-md-12 text-center">
+				<span class="copyright" style="color: white"> Adulam Store ©
+					2023 || Todos los derechos reservados </span>
+			</div>
+		</div>
+	</footer>
+
+	<!-- jQuery Plugins -->
+	<script th:src="@{/js2/cart.js}"></script>
+	<script th:src="@{/js2/slider.js}"></script>
+	<script th:src="@{/js2/jquery.min.js}"></script>
+	<script th:src="@{/js2/bootstrap.min.js}"></script>
+	<script th:src="@{/js2/slick.min.js}"></script>
+	<script th:src="@{/js2/nouislider.min.js}"></script>
+	<script th:src="@{/js2/jquery.zoom.min.js}"></script>
+	<script th:src="@{/js2/main.js}"></script>
+
+
+</body>
+</html>
