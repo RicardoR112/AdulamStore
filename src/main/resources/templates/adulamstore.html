@@ -105,7 +105,7 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li><a th:href="@{/adulamstore}">INICIO</a></li>
-						<li class="active"><a th:href="@{/adulamstore/list}">CATEGORÍAS</a></li>
+						<li class="active"><a th:href="@{/adulamstore/list}">PRODUCTOS</a></li>
 						<li><a th:href="@{/pqrs/new}">PQRS</a></li>
 					</ul>
 				</div>
@@ -157,7 +157,7 @@
 					<div id="store" class="col-md-9">
 						<!-- store products -->
 						<div class="row">
-							<form th:each="producto: ${listProducto}">
+							<div th:each="producto: ${listProducto}">
 							<!-- product -->
 							<div th:if="${producto.cantidad == 0}">
 							</div>
@@ -176,7 +176,7 @@
 									</div>
 								</div>
 							</div>
-					</form>
+					</div>
 					</div>
 						<div class="store-filter clearfix">
 							<span class="store-qty">Mostrando productos</span>
