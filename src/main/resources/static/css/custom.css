@@ -405,6 +405,7 @@ background-color:rgba(0,0,0,0.09);
 	  .navbar-nav > li.show .dropdown-menu{
 		  transform:translate3d(0,0,0);
 		  opacity:1;
+		  transform: translatex(-100px);
 		  display:block;
 		  visibility:visible;
 	  }
