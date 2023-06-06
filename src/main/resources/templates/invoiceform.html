@@ -21,6 +21,8 @@
 <link rel="stylesheet" th:href="@{/css2/font-awesome.min.css}">
 <link rel="stylesheet" th:href="@{/css2/style.css}" />
 <link rel="icon" href="https://i.imgur.com/zWVUxBY.png">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
 
 
@@ -40,8 +42,15 @@
 				<ul class="header-links pull-right">
 					<li style="color: white">Bienvenido - <span
 						style="color: white" th:text="${cliente}"></span></li>
-					<a th:href="@{/adulamstore/logout}" style="color: white">Cerrar
-						Sesión</a>
+
+
+
+					<a th:href="@{/adulamstore/logout}" style="color: white">
+
+						<button style="color: white; color: #3F979B">Cerrar
+							Sesión</button>
+
+					</a>
 				</ul>
 			</div>
 		</div>
@@ -66,8 +75,12 @@
 				<div class="row">
 					<div class="col-md-3">
 						<div class="header-logo">
-							<img th:src="@{https://i.imgur.com/aAJ2EQF.png}"
+
+							<a href="/adulamstore/list"> <img
+								th:src="@{https://i.imgur.com/aAJ2EQF.png}"
 								style="width: 120px; height: 120px">
+
+							</a>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -127,15 +140,17 @@
 			</tbody>
 		</table>
 	</div>
-	
+
 	<div class="totalPagar">
 		<h5 class="total"></h5>
 	</div>
-	
+
+
 	<div class="buttonAction">
 		<button type="button" class="btn btn-success" id="irpagar"
 			onclick="pagar()">Pagar (0)</button>
 	</div>
+
 
 	<script type="text/javascript">
 		function pagar() {
@@ -155,15 +170,156 @@
 	</script>
 
 
+	
+	<!-- GENERAR RECIBO -->
 
+	<script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
 
+	<script>
+		function generar() {
+			
+			var pdfObject = jsPDFInvoiceTemplate.default(props);
+			
+			console.log("recibo creado", pdfObject);
 
+		}
+		
+		
+		var props = {
+				
+				outputType: jsPDFInvoiceTemplate.OutputType.Save,
+			    returnJsPDFDocObject: true,
+			    fileName: "AdulamStore-Factura",
+			    orientationLandscape: false,
+			    compress: true,
+			    logo: {
+			        src: "https://i.imgur.com/aAJ2EQF.png",
+			        type: 'PNG', //optional, when src= data:uri (nodejs case)
+			        width: 26.33, //aspect ratio = width/height
+			        height: 26.66,
+			        margin: {
+			            top: 0, //negative or positive num, from the current position
+			            left: 0 //negative or positive num, from the current position
+			        }
+			    },
+			    stamp: {
+			        inAllPages: true, //by default = false, just in the last page
+			        src: "https://i.imgur.com/aAJ2EQF.png",
+			        type: 'JPG', //optional, when src= data:uri (nodejs case)
+			        width: 40, //aspect ratio = width/height
+			        height: 40,
+			        margin: {
+			            top: 0, //negative or positive num, from the current position
+			            left: 0 //negative or positive num, from the current position
+			        }
+			    },
+			    business: {
+			        name: "AdulamStore", 
+			        address: "Gran Bulevar L-120",
+			        phone: "+57 3132274023",
+			        email: "tecnosistemasadulam@email.com",
+			  
+			    },
+			    contact: {
+			        label: "Factura emitida por:",
+			        name: "Juan David Contreras Pabón",
+			        address: "",
+			        phone: "",
+			        email: "",
+			        otherInfo: "",
+			    },
+			    invoice: {
+			        label: "Número de factura: ",
+			        num: 19,
+			        invDate: "Fecha de Pago: 01/01/2021 18:12",
+			        invGenDate: "Fecha de factura: 02/02/2021 10:17",
+			        headerBorder: false,
+			        tableBodyBorder: false,
+			        header: [
+			          {
+			            title: "#", 
+			            style: { 
+			              width: 10 
+			            } 
+			          }, 
+			          { 
+			            title: "Título",
+			            style: {
+			              width: 30
+			            } 
+			          }, 
+			          { 
+			            title: "Descripción",
+			            style: {
+			              width: 80
+			            } 
+			          }, 
+			          { title: "Precio"},
+			          { title: "Cantidad"},
+			          { title: "Unidad"},
+			          { title: "Total"}
+			        ],
+			        table: Array.from(Array(10), (item, index)=>([
+			            index + 1,
+			            "There are many variations ",
+			            "Lorem Ipsum is simply dummy text dummy text ",
+			            200.5,
+			            4.5,
+			            "m2",
+			            400.5
+			        ])),
+			        additionalRows: [{
+			            col1: 'Total:',
+			            col2: '145,250.50',
+			            col3: 'ALL',
+			            style: {
+			                fontSize: 14 //optional, default 12
+			            }
+			        },
+			        {
+			            col1: 'VAT:',
+			            col2: '20',
+			            col3: '%',
+			            style: {
+			                fontSize: 10 //optional, default 12
+			            }
+			        },
+			        {
+			            col1: 'SubTotal:',
+			            col2: '116,199.90',
+			            col3: 'ALL',
+			            style: {
+			                fontSize: 10 //optional, default 12
+			            }
+			        }],
+			        invDescLabel: "Invoice Note",
+			        invDesc: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.",
+			    },
+			    footer: {
+			        text: "The invoice is created on a computer and is valid without the signature and stamp.",
+			    },
+			    pageEnable: true,
+			    pageLabel: "Page ",
+			};
+				
+				 
+			
+	</script>
+
+	
+	
+  
 	<!-- jQuery Plugins -->
 	<script th:src="@{/js2/cart.js}"></script>
+
 	<script th:src="@{/js2/jquery.min.js}"></script>
+
 	<script th:src="@{/js2/bootstrap.min.js}"></script>
+
 	<script th:src="@{/js2/slick.min.js}"></script>
+
 	<script th:src="@{/js2/nouislider.min.js}"></script>
+
 	<script th:src="@{/js2/jquery.zoom.min.js}"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

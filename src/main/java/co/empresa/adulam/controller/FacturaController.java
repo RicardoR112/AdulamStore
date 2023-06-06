@@ -70,4 +70,13 @@ public class FacturaController {
 		
 		return ResponseEntity.ok().headers(headers).body(new InputStreamResource(stream));
 	}
+	
+	
+	@GetMapping("/factura")
+	  public String generarFactura() {
+	    return "factura"; // Vista de la página de generación de factura
+	  }
+	
+
+	
 }

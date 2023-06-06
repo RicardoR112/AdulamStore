@@ -132,7 +132,11 @@ if(bottonAction){
 }
 
 function showDetails (){
-	//limpíarHTML
+	//limpíarHTML style="background-color:red;color:white"
+	//<i class="material-icons" data-toggle="tooltip" title="Delete" >&#xE872;
+	//<i class="material-icons" data-toggle="tooltip" title="Approved">&#xE876;
+	//style="color:white;background-color:red"
+	
 	containerDetails.innerHTML= '';
 	allProducts.forEach(product => {
 		if(containerDetails){
@@ -142,11 +146,16 @@ function showDetails (){
 							 <td id="na">${product.title}</td>
 							 <td id="cantidad">${product.quantity}</td>
 							 <td id="precio">$ ${parseInt(product.price.slice(1)*product.quantity)}</td>
+							 
 							 <td>
-								 <button id="borrar" class="delete" style="background-color:red;color:white"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+							 
+							     <button id="add" class="add" style="color:white;background-color:green"> ✔
 								 </button>
-								 <button id="add" class="add" style="color:white;background-color:green"><i class="material-icons" data-toggle="tooltip" title="Approved">&#xE876;</i>
+							 
+								 <button id="borrar" class="delete" style="color:white;background-color:red"> ✘
 								 </button>
+								 
+								
 							 </td>
 		`;
 	  		containerDetails.appendChild(row);

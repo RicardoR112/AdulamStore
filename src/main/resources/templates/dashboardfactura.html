@@ -98,7 +98,7 @@
 								  <ul class="dropdown-menu small-menu">
 									 <li><a href="/admin/logout">
 									 <span class="material-icons">logout</span>
-									 Logout
+									 Cerrar sesión
 									 </a></li>
 								  </ul>
 							   </li>
@@ -128,14 +128,9 @@
 					   <div class="table-title">
 					     <div class="row">
 						     <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-							    <h2 class="ml-lg-2">Gestionar productos</h2>
+							    <h2 class="ml-lg-2">Informe de compras</h2>
 							 </div>
-							 <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
-							   <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
-							   <i class="material-icons">&#xE147;</i>
-							   <span>Agregar producto</span>
-							   </a>
-							 </div>
+							 
 					     </div>
 					   </div>
 					   
@@ -172,58 +167,7 @@
 					   
 					   </div>
 					</div>
-		<form th:action="@{/producto/save}" method="post">			
-		<div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Agregar producto</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="form-group">
-		    <label>Referencia</label>
-			<input name="ref" type="text" placeholder="Referencia" class="form-control" required>
-		</div>
-        <div class="form-group">
-		    <label>Marca</label>
-			<input name="marca" type="text" placeholder="Marca" class="form-control" required>
-		</div>
-		<div class="form-group">
-		    <label>Precio</label>
-			<input name="precio" type="number" placeholder="Precio" class="form-control" required>
-		</div>
-		<div class="form-group">
-		    <label>Nombre</label>
-			<input name="nombre" type="text" placeholder="Descripcion" class="form-control" required></input>
-		</div>
-		<div class="form-group">
-		    <label>Cantidad</label>
-			<input type="number" name="cantidad" placeholder="Cantidad" class="form-control" required>
-		</div>
-		<div class="form-group">
-		    <label>Categoría</label>
-		    <select class="input-select" type="number" name="id_categoria">
-		    <form th:each="cat: ${categoria}">
-				<option th:value="${cat.id}" th:text="${cat.nombre}"></option>
-			</form>
-			</select>
-		</div>
-		<div class="form-group">
-		    <label>URL imagen</label>
-			<input type="text" name="imagen" placeholder="URL imagen" class="form-control" required>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Agregar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
+		
 		
 </div>
 </div>
